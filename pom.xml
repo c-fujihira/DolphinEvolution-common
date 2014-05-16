@@ -4,7 +4,7 @@
 
   <groupId>opendolphin</groupId>
   <artifactId>DolphinEvolution-common</artifactId>
-  <version>1.0-Build05</version>
+  <version>1.1-Build10</version>
   <packaging>jar</packaging>
 
     <name>DolphinEvolution-common</name>

@@ -38,6 +38,7 @@
  */
 package open.dolphin.infomodel;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -57,7 +58,7 @@ import javax.persistence.Transient;
  * @author Minagawa,Kazushi. Digital Globe, Inc.
  * @author modified Chikara Fujihira <fujihirach@sandi.co.jp>, S&I Co.,Ltd.
  */
-@Embeddable
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class DocInfoModel extends InfoModel
         implements Comparable, java.io.Serializable {
 
@@ -435,6 +436,15 @@ public class DocInfoModel extends InfoModel
     }
 
     /**
+     * 最初の確定日の日付時刻を返す。
+     *
+     * @return 最初の確定日の日付時刻
+     */
+    public String getFirstConfirmDateTime() {
+        return ModelUtils.getDateAsFormatString(getFirstConfirmDate(), ISO_DF_FORMAT);
+    }
+
+    /**
      * 確定日を設定する
      *
      * @param confirmDate 確定日
@@ -459,6 +469,15 @@ public class DocInfoModel extends InfoModel
      */
     public String getConfirmDateTrimTime() {
         return ModelUtils.getDateAsString(getConfirmDate());
+    }
+
+    /**
+     * 確定日の日付時刻を返す。
+     *
+     * @return 確定日の日付時刻
+     */
+    public String getConfirmDateTime() {
+        return ModelUtils.getDateAsFormatString(getConfirmDate(), ISO_DF_FORMAT);
     }
 
     /**
@@ -1180,7 +1199,7 @@ public class DocInfoModel extends InfoModel
     public void setUseGeneralName(boolean useGeneralName) {
         this.useGeneralName = useGeneralName;
     }
-    
+
 //minagawa^ 予定カルテ(予定カルテ対応)
     public boolean isScheduled() {
         boolean ret = (this.status != null

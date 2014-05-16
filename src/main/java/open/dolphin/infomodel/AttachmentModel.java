@@ -64,7 +64,7 @@ public class AttachmentModel extends KarteEntryBean implements Serializable, jav
     private String memo;
 
     @Lob
-    @Column(columnDefinition = "BLOB(267386880)", nullable = false)
+    @Column(nullable=false)
     private byte[] bytes;   // data
 
     @ManyToOne

@@ -45,8 +45,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.*;
-import org.hibernate.search.annotations.FullTextFilterDef;
-import org.hibernate.search.annotations.FullTextFilterDefs;
+//import org.hibernate.search.annotations.FullTextFilterDef;
+//import org.hibernate.search.annotations.FullTextFilterDefs;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.IndexedEmbedded;
 
@@ -57,10 +57,10 @@ import org.hibernate.search.annotations.IndexedEmbedded;
  * @author modified Chikara Fujihira <fujihirach@sandi.co.jp>, S&I Co.,Ltd.
  */
 @Indexed(index = "document")
-@FullTextFilterDefs({
-    @FullTextFilterDef(name = "karteId", impl = KearteIdFilterFactory.class),
-    @FullTextFilterDef(name = "facilityPk", impl = FacilityPkFilterFactory.class)
-})
+//@FullTextFilterDefs({
+//    @FullTextFilterDef(name = "karteId", impl = KearteIdFilterFactory.class),
+//    @FullTextFilterDef(name = "facilityPk", impl = FacilityPkFilterFactory.class)
+//})
 @Entity
 @Table(name = "d_document")
 public class DocumentModel extends KarteEntryBean
@@ -100,6 +100,7 @@ public class DocumentModel extends KarteEntryBean
         docInfo.setConfirmDate(getConfirmed());
         docInfo.setFirstConfirmDate(getStarted());
         docInfo.setStatus(getStatus());
+        docInfo.setPurpose(getUserModel().getCommonName());
     }
 
     /**
@@ -494,7 +495,11 @@ public class DocumentModel extends KarteEntryBean
         ret.getDocInfoModel().setHealthInsuranceDesc(this.getDocInfoModel().getHealthInsuranceDesc());
         ret.getDocInfoModel().setHealthInsurance(this.getDocInfoModel().getHealthInsurance());
         ret.getDocInfoModel().setHealthInsuranceGUID(this.getDocInfoModel().getHealthInsuranceGUID());
-        ret.toDetuch();
+        ret.getDocInfoModel().setDocPk(getId());
+        ret.getDocInfoModel().setParentPk(getLinkId());
+        ret.getDocInfoModel().setConfirmDate(getConfirmed());
+        ret.getDocInfoModel().setFirstConfirmDate(getStarted());
+        ret.getDocInfoModel().setStatus(getStatus());
         ret.getDocInfoModel().setClaimDate(this.getDocInfoModel().getClaimDate());
         return ret;
     }

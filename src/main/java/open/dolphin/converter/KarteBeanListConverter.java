@@ -36,66 +36,43 @@
  * Public License, version 3 (GPLv3) This is free software, and you are welcome to redistribute 
  * it under certain conditions; see the GPLv3 for details.
  */
-package open.dolphin.infomodel;
+package open.dolphin.converter;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import open.dolphin.infomodel.IInfoModel;
+import open.dolphin.infomodel.KarteBean;
+import open.dolphin.infomodel.KarteList;
 
 /**
- * ByteModule
+ * KarteBeanListConverter
  *
- * @author Kazushi Minagawa, Digital Globe, Inc.
- * @author modified Chikara Fujihira <fujihirach@sandi.co.jp>, S&I Co.,Ltd.
+ * @author kazushi Minagawa.
+ * @author modified manabu nishimura <nishimurama@sandi.co.jp>, S&I Co.,Ltd.
  */
-@Entity
-@Table(name = "d_byte_module")
-public class ByteModule implements Serializable {
+public class KarteBeanListConverter implements IInfoModelConverter {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private KarteList model;
 
-    @Lob
-    private byte[] beanBytes;
+    public List<KarteBeanConverter> getList() {
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ByteModule)) {
-            return false;
+        List<KarteBean> list = model.getList();
+        if (list == null || list.isEmpty()) {
+            return null;
         }
-        ByteModule other = (ByteModule) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
+
+        List<KarteBeanConverter> ret = new ArrayList<>();
+        for (KarteBean m : list) {
+            KarteBeanConverter con = new KarteBeanConverter();
+            con.setModel(m);
+            ret.add(con);
         }
-        return true;
+
+        return ret;
     }
 
     @Override
-    public String toString() {
-        return "open.dolphin.infomodel.ByteModule[id=" + id + "]";
-    }
-
-    public byte[] getBeanBytes() {
-        return beanBytes;
-    }
-
-    public void setBeanBytes(byte[] beanBytes) {
-        this.beanBytes = beanBytes;
+    public void setModel(IInfoModel model) {
+        this.model = (KarteList) model;
     }
 }

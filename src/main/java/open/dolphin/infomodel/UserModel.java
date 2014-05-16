@@ -41,10 +41,6 @@ package open.dolphin.infomodel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.*;
 
 /**
@@ -55,8 +51,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "d_users")
-@TransactionManagement(TransactionManagementType.BEAN)
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+//@TransactionManagement(TransactionManagementType.BEAN)
+//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class UserModel extends InfoModel implements java.io.Serializable {
 
     @Id

@@ -36,43 +36,43 @@
  * Public License, version 3 (GPLv3) This is free software, and you are welcome to redistribute 
  * it under certain conditions; see the GPLv3 for details.
  */
-package open.dolphin.infomodel;
-
-import org.apache.lucene.index.Term;
-import org.apache.lucene.search.Filter;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.QueryWrapperFilter;
-import org.apache.lucene.search.TermQuery;
-import org.hibernate.search.annotations.Factory;
-import org.hibernate.search.annotations.Key;
-import org.hibernate.search.filter.FilterKey;
-import org.hibernate.search.filter.StandardFilterKey;
-import org.hibernate.search.filter.impl.CachingWrapperFilter;
-
-/**
- * KearteIdFilterFactory
- *
- * @author masuda, Masuda Naika
- * @author modified Chikara Fujihira <fujihirach@sandi.co.jp>, S&I Co.,Ltd.
- */
-public class KearteIdFilterFactory {
-
-    private long karteId;
-
-    public void setKarteId(long karteId) {
-        this.karteId = karteId;
-    }
-
-    @Key
-    public FilterKey getKey() {
-        StandardFilterKey key = new StandardFilterKey();
-        key.addParameter(karteId);
-        return key;
-    }
-
-    @Factory
-    public Filter getFilter() {
-        Query query = new TermQuery(new Term("karte.id", String.valueOf(karteId)));
-        return new CachingWrapperFilter(new QueryWrapperFilter(query));
-    }
-}
+//package open.dolphin.infomodel;
+//
+//import org.apache.lucene.index.Term;
+//import org.apache.lucene.search.Filter;
+//import org.apache.lucene.search.Query;
+//import org.apache.lucene.search.QueryWrapperFilter;
+//import org.apache.lucene.search.TermQuery;
+//import org.hibernate.search.annotations.Factory;
+//import org.hibernate.search.annotations.Key;
+//import org.hibernate.search.filter.FilterKey;
+//import org.hibernate.search.filter.StandardFilterKey;
+//import org.hibernate.search.filter.impl.CachingWrapperFilter;
+//
+///**
+// * KearteIdFilterFactory
+// *
+// * @author masuda, Masuda Naika
+// * @author modified Chikara Fujihira <fujihirach@sandi.co.jp>, S&I Co.,Ltd.
+// */
+//public class KearteIdFilterFactory {
+//
+//    private long karteId;
+//
+//    public void setKarteId(long karteId) {
+//        this.karteId = karteId;
+//    }
+//
+//    @Key
+//    public FilterKey getKey() {
+//        StandardFilterKey key = new StandardFilterKey();
+//        key.addParameter(karteId);
+//        return key;
+//    }
+//
+//    @Factory
+//    public Filter getFilter() {
+//        Query query = new TermQuery(new Term("karte.id", String.valueOf(karteId)));
+//        return new CachingWrapperFilter(new QueryWrapperFilter(query));
+//    }
+//}

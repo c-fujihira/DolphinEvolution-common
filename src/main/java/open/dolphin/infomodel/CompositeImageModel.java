@@ -73,7 +73,7 @@ public class CompositeImageModel extends KarteEntryBean implements java.io.Seria
     private ImageIcon icon;
 
     @Lob
-    @Column(columnDefinition = "BLOB(267386880)", nullable = false)
+    @Column(nullable=false)
     private byte[] jpegByte;
 
     @Column(nullable = false)

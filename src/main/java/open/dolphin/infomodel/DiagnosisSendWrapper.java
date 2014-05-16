@@ -104,6 +104,17 @@ public class DiagnosisSendWrapper extends InfoModel implements Serializable {
     // 削除された病名リスト
     private List<RegisteredDiagnosisModel> deletedDiagnosis;
 
+    //- 更新時のORCA送信用削除リスト
+    private List<RegisteredDiagnosisModel> claimDel;
+    
+    public void setClaimDel(List<RegisteredDiagnosisModel> claimDel) {
+        this.claimDel = claimDel;
+    }
+    
+    public List<RegisteredDiagnosisModel> getClaimDel() {
+        return claimDel;
+    }
+
     public List<RegisteredDiagnosisModel> getDeletedDiagnosis() {
         return deletedDiagnosis;
     }

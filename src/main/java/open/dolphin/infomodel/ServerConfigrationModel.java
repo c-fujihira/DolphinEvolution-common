@@ -17,10 +17,6 @@
 package open.dolphin.infomodel;
 
 import java.util.Date;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,8 +34,8 @@ import org.hibernate.annotations.Type;
  */
 @Entity
 @Table(name = "d_server_cfg")
-@TransactionManagement(TransactionManagementType.BEAN)
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+//@TransactionManagement(TransactionManagementType.BEAN)
+//@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 public class ServerConfigrationModel implements java.io.Serializable {
 
     private static final String DEFAULT_INIT_TIME = "0300";
