@@ -4,7 +4,7 @@
 
   <groupId>opendolphin</groupId>
   <artifactId>DolphinEvolution-common</artifactId>
-  <version>1.1-Build10</version>
+  <version>1.1-Build12</version>
   <packaging>jar</packaging>
 
     <name>DolphinEvolution-common</name>
@@ -36,6 +36,14 @@
           <artifactId>antlr</artifactId>
           <groupId>antlr</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>hibernate-commons-annotations</artifactId>
+          <groupId>org.hibernate.common</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jboss-logging</artifactId>
+          <groupId>org.jboss.logging</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -56,6 +64,14 @@
           <artifactId>lucene-facet</artifactId>
           <groupId>org.apache.lucene</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>lucene-core</artifactId>
+          <groupId>org.apache.lucene</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jboss-logging</artifactId>
+          <groupId>org.jboss.logging</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
@@ -74,7 +90,13 @@
       <artifactId>hibernate-commons-annotations</artifactId>
       <groupId>org.hibernate.common</groupId>
       <type>jar</type>
-      <version>4.0.1.Final</version>
+      <version>4.0.2.Final</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>jboss-logging</artifactId>
+          <groupId>org.jboss.logging</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
